@@ -1,69 +1,65 @@
-import Image from "next/image";
+import Link from "next/link";
+
+const TOOLS = [
+  {
+    href: "/faq-bot",
+    title: "社内FAQチャットボット",
+    description:
+      "社内マニュアルを読み込ませて質問に自動回答。バックオフィス問い合わせの一次対応を削減。",
+  },
+  {
+    href: "/inquiry-triage",
+    title: "問い合わせ自動振り分け",
+    description:
+      "顧客からの問い合わせを分類・緊急度判定し、返信の下書きまで自動生成。",
+  },
+  {
+    href: "/report-generator",
+    title: "CSVレポート自動生成",
+    description:
+      "売上・アクセスデータのCSVから、週次・月次レポートをMarkdownで自動作成。",
+  },
+  {
+    href: "/transcript-summarizer",
+    title: "議事録自動要約",
+    description:
+      "会議の文字起こしから、決定事項・アクションアイテムを整理した議事録を自動生成。",
+  },
+];
 
 export default function Home() {
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert h-5 w-[100px]"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the{" "}
-            <code className="rounded bg-black/[.06] px-1.5 py-0.5 font-mono text-[0.9em] dark:bg-white/[.08]">
-              page.tsx
-            </code>{" "}
-            file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
+    <div className="min-h-screen bg-neutral-50 text-neutral-900">
+      <div className="mx-auto max-w-4xl px-6 py-16">
+        <p className="text-sm font-medium text-neutral-500">
+          AI業務効率化ツールキット
+        </p>
+        <h1 className="mt-2 text-3xl font-bold">
+          Claudeで作る、中小企業向け業務自動化のデモ集
+        </h1>
+        <p className="mt-3 max-w-2xl text-neutral-600">
+          問い合わせ対応・レポート作成・議事録作成など、日々の定型業務をAIで自動化する4つのツールのデモです。
+          いずれもClaude
+          APIを使って数時間〜1日程度で構築しています。実際の業務に合わせたカスタム開発も可能です。
+        </p>
+
+        <div className="mt-10 grid gap-4 sm:grid-cols-2">
+          {TOOLS.map((tool) => (
+            <Link
+              key={tool.href}
+              href={tool.href}
+              className="group rounded-xl border border-neutral-200 bg-white p-5 transition hover:border-neutral-400 hover:shadow-sm"
             >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
+              <h2 className="font-semibold text-neutral-900 group-hover:underline">
+                {tool.title}
+              </h2>
+              <p className="mt-1 text-sm text-neutral-600">
+                {tool.description}
+              </p>
+            </Link>
+          ))}
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert h-[14px] w-4"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={14}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
-      </main>
+      </div>
     </div>
   );
 }
