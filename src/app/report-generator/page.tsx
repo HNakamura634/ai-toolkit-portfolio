@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import ReactMarkdown from "react-markdown";
+import remarkGfm from "remark-gfm";
 import { PageShell } from "@/components/PageShell";
 
 const SAMPLE_CSV = `date,channel,visitors,orders,revenue
@@ -101,7 +102,7 @@ export default function ReportGeneratorPage() {
         )}
         {report && (
           <div className="prose prose-sm max-w-none rounded-lg border border-neutral-200 bg-white p-4">
-            <ReactMarkdown>{report}</ReactMarkdown>
+            <ReactMarkdown remarkPlugins={[remarkGfm]}>{report}</ReactMarkdown>
           </div>
         )}
       </div>

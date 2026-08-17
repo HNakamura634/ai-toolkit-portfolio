@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import ReactMarkdown from "react-markdown";
+import remarkGfm from "remark-gfm";
 import { PageShell } from "@/components/PageShell";
 
 const SAMPLE_TRANSCRIPT = `田中: 今日は新機能のリリース時期について話しましょう。
@@ -67,7 +68,7 @@ export default function TranscriptSummarizerPage() {
         )}
         {minutes && (
           <div className="prose prose-sm max-w-none rounded-lg border border-neutral-200 bg-white p-4">
-            <ReactMarkdown>{minutes}</ReactMarkdown>
+            <ReactMarkdown remarkPlugins={[remarkGfm]}>{minutes}</ReactMarkdown>
           </div>
         )}
       </div>
